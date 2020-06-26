@@ -1,14 +1,21 @@
 <template>
-<TheFooter/>
+  <div>
+    <Banner />
+    <About />
+  </div>
 </template>
 
 <script>
-import TheFooter from '../components/TheFooter.vue'
+import Banner from "../components/Banner.vue";
+import About from "../components/About.vue";
 
 export default {
-  name: 'Homepage',
-  components: {TheFooter}
-}
+  name: "Homepage",
+  components: {
+    Banner,
+    About
+  }
+};
 </script>
 
 <style scoped>

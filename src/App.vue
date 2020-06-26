@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <TheHeader />
-    <Homepage />
-    <TheFooter />
+    <div clas="site-main">
+      <Homepage/>
+    </div>
+    <TheFooter/>
   </div>
 </template>
 
@@ -22,4 +24,9 @@ export default {
 </script>
 
 <style>
+@import './css/custom.css';
+
+#app {
+font-family: 'Mitr';
+}
 </style>

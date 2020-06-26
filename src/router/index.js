@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import TheFooter from '../components/TheFooter.vue'
+import Homepage from '../views/Homepage.vue'
+import DetailPage from '../views/DetailPage.vue'
 
 Vue.use(Router)
 
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
 
 const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    { 
+      path: '/home', 
+      name: 'Homepage',
+      component: Homepage 
+    },
+    { 
+      path: '/detail/', 
+      name: 'DetailPage',
+      component: DetailPage }
+     
   ]
 
   const router = new Router({

@@ -13,3 +13,9 @@
     </b-tabs>
   </b-card>
 </template>
+
+<script>
+export default {
+  name: "TestBootstrap"
+};
+</script>
