@@ -1,26 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Homepage from '../views/Homepage.vue'
-import DetailPage from '../views/DetailPage.vue'
 
 Vue.use(Router)
 
-
-const routes = [
-    { 
-      path: '/home', 
-      name: 'Homepage',
-      component: Homepage 
-    },
-    { 
-      path: '/detail/', 
-      name: 'DetailPage',
-      component: DetailPage }
-     
-  ]
-
   const router = new Router({
-    routes // short for `routes: routes`
+    mode:'history',
+    scrollBehavior: function(to) {
+      if (to.hash) {
+        return {selector: to.hash}
+      } else {
+        return {x: 0, y: 0}
+      }
+    },
+    routes: [
+      { 
+        path: '/', 
+        name: 'Homepage',
+        component: () => import("@/views/Homepage") 
+      },
+      { 
+        path: '/detail/', 
+        name: 'DetailPage',
+        component: () => import("@/views/DetailPage")
+      },
+      { 
+        path: '/result/', 
+        name: 'ResultPage',
+        component: () => import("@/views/ResultPage")
+      }
+      
+    ],
+    
   })
 
 export default router

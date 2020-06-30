@@ -1,10 +1,8 @@
 <template>
-  <div class="container detail-area" style="margin-top: 8rem; margin-bottom: 3rem;">
+  <div class="container detail-area" style="margin-top: 8rem; margin-bottom: 1rem;">
     <div class="row">
       <div class="col-12">
-        <h2
-          class="text-center"
-        >โปรแกรมวิเคราะห์องค์ประกอบร่างกายและดัชนีมวลกล้ามเนื้อสำหรับเด็กและผู้ใหญ่</h2>
+        <h2 class="text-center">โปรแกรมวิเคราะห์องค์ประกอบร่างกายและดัชนีมวลกล้ามเนื้อสำหรับเด็กและผู้ใหญ่</h2>
         <br />
         <div class="paragraph">
           <p>
@@ -80,7 +78,7 @@
       <h4 class="pt-4">การเปลี่ยนแปลงขององค์ประกอบร่างกาย น้ำหนักมวลกล้ามเนื้อต่อน้ำหนักตัว</h4>
       <br />
       <div class="col-lg-5 col-md-12 d-flex align-items-center">
-        <img src="{% static 'img/1.png' %}" width="105%" />
+        <img src="../assets/img/1.png" width="105%" />
       </div>
       <div class="col-lg-7 col-md-12 py-5">
         <ul>
@@ -117,7 +115,7 @@
         </ul>
       </div>
       <div class="col-lg-5 col-md-12 d-flex align-items-center">
-        <img src="{% static 'img/2.png' %}" width="105%" />
+        <img src="../assets/img/2.png" width="105%" />
       </div>
     </div>
 
@@ -128,7 +126,7 @@
           <br />ของเด็กชาย 5-18 ปี
         </i>
         <br />
-        <img src="{% static 'img/mmi_boy.png' %}" width="100%" />
+        <img src="../assets/img/mmi_boy.png" width="100%" />
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 text-center">
         <i>
@@ -136,7 +134,7 @@
           <br />ของเด็กหญิง 5-18 ปี
         </i>
         <br />
-        <img src="{% static 'img/mmi_girl.png' %}" width="100%" />
+        <img src="../assets/img/mmi_girl.png" width="100%" />
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 text-center">
         <i>
@@ -144,7 +142,7 @@
           <br />ของเพศชาย 19-40 ปี
         </i>
         <br />
-        <img src="{% static 'img/mmi_men.png' %}" width="100%" />
+        <img src="../assets/img/mmi_men.png" width="100%" />
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 text-center">
         <i>
@@ -152,13 +150,13 @@
           <br />ของเพศหญิง 19-40 ปี
         </i>
         <br />
-        <img src="{% static 'img/mmi_women.png' %}" width="100%" />
+        <img src="../assets/img/mmi_women.png" width="100%" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-5 col-md-12 d-flex align-items-center">
-        <img src="{% static 'img/3.png' %}" width="105%" />
+        <img src="../assets/img/3.png" width="105%" />
       </div>
       <div class="col-lg-7 col-md-12 py-5">
         <ul>
@@ -179,9 +177,21 @@
 
 <script>
 export default {
-  name: "Detailpage"
+  name: "DetailPage"
 };
 </script>
 
 <style scoped>
+
+.detail-area p {
+  font-weight: 300;
+  font-size: 18px;
+  padding: 0.5rem 0;
+}
+
+.detail-area ul  {
+  font-weight: 300;
+  font-size: 18px;
+}
+
 </style>

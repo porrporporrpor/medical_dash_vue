@@ -24,8 +24,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .services-area .services-icon {
   color: #f16323;
 }

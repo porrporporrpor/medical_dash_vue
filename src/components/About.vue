@@ -1,7 +1,6 @@
 <template>
-  <div>
-
-<!--  ========================= Service Area ==========================  -->
+  <div id="about">
+    <!--  ========================= Service Area ==========================  -->
     <section class="services-area">
       <div class="container">
         <div class="row">
@@ -21,46 +20,48 @@
       </div>
     </section>
 
-<!--  ========================= About Area ==========================  -->
-<section class="about-area" id="about">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <div class="about-image">
-            <img
-              src="../assets/img/doctor_check.jpg"
-              alt="About us"
-              class="img-fluid d-flex align-items-center"
-            />
+    <!--  ========================= About Area ==========================  -->
+    <section class="about-area">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 d-flex align-items-center">
+              <img
+                src="../assets/img/doctor_check.jpg"
+                alt="About us"
+                width="100%"
+              />
           </div>
-        </div>
-        <div class="col-lg-6 col-md-12 about-title">
-          <h2 class="pt-5 pl-5">โปรแกรมคำนวณ</h2>
-          <hr />
-          <div class="paragraph">
-            <p class="para">
-              โปรแกรมวิเคราะห์องค์ประกอบร่างกายและดัชนีมวลกล้ามเนื้อ ถูกสร้างเพื่อใช้สำหรับการแปลผลและให้คำแนะนำเบื้องต้นต่อบุคคลทั่วไปเด็กและผู้ใหญ่อายุมากกว่า 5 ปี
-              ที่ทราบค่ามวลกล้ามเนื้อของตนเองภายหลังจากการตรวจวัดมวลกล้ามเนื้อด้วยเครื่องวัดองค์ประกอบร่างกาย ที่มีราคาถูก เพื่อการปรับใช้งานในบ้าน โรงเรียน
-              สำหรับประชากรขนาดใหญ่ โปรแกรมจะคำนวณค่าดัชนีมวลกล้ามเนื้อ และแปลค่าดัชนีมวลกล้ามเนื้อร่วมกับค่าดัชนีมวลกาย
-              <a href="">อ่านเพิ่มเติม</a>
-            </p>
+          <div class="col-lg-6 col-md-12 about-title">
+            <h2 class="pt-5 pl-5">โปรแกรมคำนวณ</h2>
+            <hr />
+            <div class="paragraph">
+              <p class="para">
+                โปรแกรมวิเคราะห์องค์ประกอบร่างกายและดัชนีมวลกล้ามเนื้อ ถูกสร้างเพื่อใช้สำหรับการแปลผลและให้คำแนะนำเบื้องต้นต่อบุคคลทั่วไปเด็กและผู้ใหญ่อายุมากกว่า 5 ปี
+                ที่ทราบค่ามวลกล้ามเนื้อของตนเองภายหลังจากการตรวจวัดมวลกล้ามเนื้อด้วยเครื่องวัดองค์ประกอบร่างกาย ที่มีราคาถูก เพื่อการปรับใช้งานในบ้าน โรงเรียน
+                สำหรับประชากรขนาดใหญ่ โปรแกรมจะคำนวณค่าดัชนีมวลกล้ามเนื้อ และแปลค่าดัชนีมวลกล้ามเนื้อร่วมกับค่าดัชนีมวลกาย
+                <br><br>
+                ข้อมูลที่ใช้ในการแปรผลมาจากการศึกษาฐานข้อมูลดัชนีมวลกายในเด็กขององค์การอนามัยโลก 
+                และจากการสำรวจมวลกล้ามเนื้อโดยเครื่องวัดองค์ประกอบร่างกายชนิด
+                วัดกล้ามเนื้อทั้งตัว (Whole Body) ในเด็กชายจำนวน 1,706 คน และเด็กหญิงจำนวน 1,598 คน 
+                อายุ 5-18 ปี และผู้ใหญ่ชายจำนวน 312 คน และหญิงจำนวน 709 คน อายุ 19-39 ปี ในประชากรเขตลาดกระบังระหว่างปี 2562-2563
+                <br><br>
+                <router-link to="/detail"><b-button variant="outline-primary">อ่านเพิ่มเติม</b-button></router-link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 </template>
 
 <script>
 import Ability from "../components/Ability.vue";
-// import router from "vue-router"
 
 export default {
   name: "About",
   components: {
-    Ability,
-    // router
+    Ability
   }
 };
 </script>
@@ -69,7 +70,7 @@ export default {
 .services-area {
   padding-top: 6rem;
 }
-/* About */
+
 .about-area {
   padding: 5rem 10% 5rem 10%;
 }
