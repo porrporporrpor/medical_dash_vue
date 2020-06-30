@@ -6,7 +6,7 @@
       <h1 class="data-focus">{{ result }}%</h1>
       <div v-if="percentile != ''">
         <h4>ค่าระหว่าง {{ percentile }}</h4>
-        <p v-if="interpret_result != None">( {{ interpret_result }} )</p>
+        <p v-if="interpret_result">( {{ interpret_result }} )</p>
 
         <p class="text-left">ค่าปกติเปอร์เซ็นไทล์</p>
         <div style="overflow-x:auto">
@@ -26,7 +26,7 @@
               <th scope="col">99th</th>
             </thead>
             <tbody>
-              <td>loop muscle row</td>
+              <td v-for="val in df" :key="val">{{val}}</td>
             </tbody>
           </table>
         </div>
@@ -45,8 +45,9 @@ export default {
     title: String,
     result: String,
     percentile: String,
+    df: Array,
     interpret_result: String
-  }
+  },
 };
 </script>
 

@@ -14,7 +14,12 @@
                 <b-form-radio v-model="selected" name="gender" value="F">หญิง</b-form-radio>
               </b-form-group>
               <!-- Age -->
-              <b-form-group id="input-group-1" label="อายุ (ปี)" label-for="input-1" :description="msg_age">
+              <b-form-group
+                id="input-group-1"
+                label="อายุ (ปี)"
+                label-for="input-1"
+                :description="msg_age"
+              >
                 <b-form-input
                   id="input-1"
                   type="number"
@@ -26,7 +31,12 @@
                 ></b-form-input>
               </b-form-group>
               <!-- Height -->
-              <b-form-group id="input-group-2" label="ส่วนสูง (เซนติเมตร)" label-for="input-2" :description="msg_height">
+              <b-form-group
+                id="input-group-2"
+                label="ส่วนสูง (เซนติเมตร)"
+                label-for="input-2"
+                :description="msg_height"
+              >
                 <b-form-input
                   id="input-2"
                   type="number"
@@ -36,7 +46,12 @@
                 ></b-form-input>
               </b-form-group>
               <!-- Weight -->
-              <b-form-group id="input-group-3" label="น้ำหนัก (เซนติเมตร)" label-for="input-3" :description="msg_weight">
+              <b-form-group
+                id="input-group-3"
+                label="น้ำหนัก (เซนติเมตร)"
+                label-for="input-3"
+                :description="msg_weight"
+              >
                 <b-form-input
                   id="input-3"
                   type="number"
@@ -46,7 +61,12 @@
                 ></b-form-input>
               </b-form-group>
               <!-- Muscle -->
-              <b-form-group id="input-group-4" label="มวลกล้ามเนื้อ (กิโลกรัม)" label-for="input-4" :description="msg_muscle">
+              <b-form-group
+                id="input-group-4"
+                label="มวลกล้ามเนื้อ (กิโลกรัม)"
+                label-for="input-4"
+                :description="msg_muscle"
+              >
                 <b-form-input
                   id="input-4"
                   type="number"
@@ -57,7 +77,9 @@
               </b-form-group>
             </b-form>
           </b-card-text>
-          <b-button @click="submitCalculatorForm()" variant="primary" block>คำนวณ</b-button>
+          <b-button @click="submitCalculator()" variant="primary" block>คำนวณ</b-button>
+          <br />
+          <li v-if="msg_invalid">{{ msg_invalid }}</li>
         </b-card>
       </div>
     </div>
@@ -65,11 +87,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Calculator",
   data() {
     return {
+      data: null,
       selected: "M",
       age: "",
       height: "",
@@ -79,7 +102,16 @@ export default {
       msg_height: "",
       msg_weight: "",
       msg_muscle: "",
+      msg_invalid: "",
+      isDisabled: false
     };
+  },
+  mounted() {
+    // if (this.msg_age != '' && this.msg_height != '' || this.msg_weight != '' || this.msg_muscle != '' || (this.msg_age == '' && this.msg_height == '' && this.msg_weight == '' && this.msg_muscle == '')) {
+    //   this.disabled = 1
+    // } else {
+    //   this.disabled = 0
+    // }
   },
   watch: {
     age(value) {
@@ -140,29 +172,46 @@ export default {
         this.msg_muscle = "";
       }
     },
-    submitCalculatorForm() {
-      let reqData = {
-        'gender': this.selected,
-        'age': this.age,
-        'height': this.height,
-        'weight': this.weight,
-        'muscle': this.muscle,
+    submitCalculator() {
+      if (
+        this.msg_age != "" ||
+        this.msg_height != "" ||
+        this.msg_weight != "" ||
+        this.msg_muscle != "" ||
+        (this.age == "" &&
+          this.height == "" &&
+          this.weight == "" &&
+          this.muscle == "")
+      ) {
+        this.msg_invalid = "กรุณาตรวจสอบข้อมูลให้ถูกต้องและครบถ้วน";
+        return;
       }
-      console.log(reqData)
-
-      // axios.post({
-      //   url: "http://127.0.0.1:8000/api/",
-      //   data: {reqData},
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   },
-      //   timeout: 900000,
-      axios.post("http://127.0.0.1:8000", {
-        reqData},).then(res => {
-        console.log(res)
-        // TO-DO
-        // alertbox if err else redirect to result page
-      })
+      this.msg_invalid = "";
+      axios
+        .post(
+          "http://localhost:8000/",
+          {
+            gender: this.selected,
+            age: this.age,
+            height: this.height,
+            weight: this.weight,
+            muscle: this.muscle
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            timeout: 900000
+          }
+        )
+        .then(res => {
+          console.log(res.data);
+          this.data = res.data;
+          localStorage.setItem("calculateResult", JSON.stringify(res.data));
+          this.$router.push("result");
+          // TO-DO
+          // alertbox if err else redirect to result page
+        });
     }
   }
 };
@@ -180,5 +229,4 @@ export default {
   margin: 0 8%;
   padding: 4% 10%;
 }
-
 </style>

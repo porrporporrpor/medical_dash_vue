@@ -10,22 +10,12 @@
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="ml-auto" v-if="main()">
-            <b-nav-item href="#banner">หน้าแรก</b-nav-item>
-            <b-nav-item href="#about">เกี่ยวกับ</b-nav-item>
-            <b-nav-item href="#calculator">โปรแกรมคำนวณ</b-nav-item>
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item href="/#banner">หน้าแรก</b-nav-item>
+            <b-nav-item href="/#about">เกี่ยวกับ</b-nav-item>
+            <b-nav-item href="/#calculator">โปรแกรมคำนวณ</b-nav-item>
           </b-navbar-nav>
-          <b-navbar-nav class="ml-auto" v-else>
-            <b-nav-item>
-              <router-link to="/#banner">หน้าแรก</router-link>
-            </b-nav-item>
-            <b-nav-item>
-              <router-link to="/#about">เกี่ยวกับ</router-link>
-            </b-nav-item>
-            <b-nav-item>
-              <router-link to="/#calculator">โปรแกรมคำนวณ</router-link>
-            </b-nav-item>
-          </b-navbar-nav>
+         
         </b-collapse>
       </b-navbar>
     </div>
@@ -34,12 +24,7 @@
 
 <script>
 export default {
-  name: "TheHeader",
-  methods: {
-    main: function() {
-      return this.$route.name === "Homepage";
-    }
-  }
+  name: "Navbar",
 };
 </script>
 

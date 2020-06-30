@@ -2,30 +2,32 @@
   <!--  ======================= Start Main Area ================================ -->
   <main class="site-main">
     <!--  ========================= Calculator Area ==========================  -->
-    <section class="calculator-area" ref="calculator">
-      <div class="container-fluid">
+    <section class="calculator-area">
+      <div class="container-fluid" ref="calculator">
         <div class="row">
           <div class="card shadow calculator-box">
             <ResultTableCard
               title="เปอร์เซ็นมวลกล้ามเนื้อต่อน้ำหนักตัว"
-              result="12.12"
-              percentile="12th-13th "
+              :result="result.muscle_weight"
+              :percentile="result.muscle_weight_percentile"
+              :df="result.muscle_selected_df"
             />
             <br />
-
             <ResultTableCard
               title="MMI : ดัชนีมวลกล้ามเนื้อ"
-              result="44"
-              percentile="12th-15th"
-              interpret_result="กล้ามเนื้อปกติ"
+              :result="result.mmi"
+              :percentile="result.mmi_percentile"
+              :df="result.mmi_selected_df"
+              :interpret_result="result.mmi_result"
             />
             <br />
 
             <ResultTableCard
               title="BMI : ดัชนีมวลกาย"
-              result="44"
-              percentile="12th-15th"
-              interpret_result="กล้ามเนื้อปกติ"
+              :result="result.bmi"
+              :percentile="result.bmi_percentile"
+              :df="result.bmi_selected_df"
+              :interpret_result="result.bmi_result"
             />
             <br />
 
@@ -35,32 +37,32 @@
                 <br />
                 <div class="text-left">
                   <p>
-                    <i class="fas fa-running"></i>
-                    การแปรผลดัชนีมวลกล้ามเนื้อ : result.mmi_result
+                    <font-awesome-icon icon="running" />
+                    การแปรผลดัชนีมวลกล้ามเนื้อ : {{ result.mmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-weight"></i>
-                    การแปรผลดัชนีมวลกาย : result.bmi_result
+                    <font-awesome-icon icon="weight" />
+                    การแปรผลดัชนีมวลกาย : {{ result.bmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-lightbulb"></i>
-                    การแปรผลดัชนีกล้ามเนื้อและดัชนีมวลกาย : result.mmi_result result.bmi_result
+                    <font-awesome-icon icon="lightbulb" />
+                    การแปรผลดัชนีกล้ามเนื้อและดัชนีมวลกาย : {{ result.mmi_result }} {{ result.bmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-user-md"></i>
-                    แพทย์ : result.bmi_mmi_result.doctor
+                    <font-awesome-icon icon="user-md" />
+                    แพทย์ : {{ result.doctor }}
                   </p>
                   <p>
-                    <i class="fas fa-utensils"></i>
-                    อาหาร : result.bmi_mmi_result.food
+                    <font-awesome-icon icon="utensils" />
+                    อาหาร : {{ result.food }}
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    กิจกรรมทางกาย : result.bmi_mmi_result.activity
+                    <font-awesome-icon icon="running" />
+                    กิจกรรมทางกาย : {{ result.activity }}
                   </p>
                   <p>
-                    <i class="fas fa-dumbbell"></i>
-                    การออกกำลังกาย : result.bmi_mmi_result.excercise
+                    <font-awesome-icon icon="dumbbell" />
+                    การออกกำลังกาย : {{ result.excercise }}
                   </p>
                 </div>
               </div>
@@ -69,64 +71,64 @@
                 <br />
                 <div class="text-left">
                   <p>
-                    <i class="fas fa-user-friends"></i>
-                    เพศ : result.gender
+                    <font-awesome-icon icon="user-friends" />
+                    เพศ : {{ result.gender }}
                   </p>
                   <p>
-                    <i class="fas fa-user-friends"></i>
-                    อายุ : result.age ปี
+                    <font-awesome-icon icon="user-friends" />
+                    อายุ : {{ result.age }} ปี
                   </p>
                   <p>
-                    <i class="fas fa-user-friends"></i>
-                    น้ำหนัก : result.weight กิโลกรัม
+                    <font-awesome-icon icon="user-friends" />
+                    น้ำหนัก : {{ result.weight }} กิโลกรัม
                   </p>
                   <p>
-                    <i class="fas fa-user-friends"></i>
-                    ส่วนสูง : result.height เซนติเมตร
+                    <font-awesome-icon icon="user-friends" />
+                    ส่วนสูง : {{ result.height }} เซนติเมตร
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    น้ำหนักมวลกล้ามเนื้อ : result.muscle กิโลกรัม
+                    <font-awesome-icon icon="running" />
+                    น้ำหนักมวลกล้ามเนื้อ : {{ result.muscle }} กิโลกรัม
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    เปอร์เซ็นมวลกล้ามเนื้อต่อน้ำหนักตัว : result.muscle_weight | floatformat:2 เปอร์เซ็น
+                    <font-awesome-icon icon="running" />
+                    เปอร์เซ็นมวลกล้ามเนื้อต่อน้ำหนักตัว : {{ result.muscle_weight }} เปอร์เซ็น
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    ดัชนีมวลกล้ามเนื้อ : result.mmi | floatformat:2
+                    <font-awesome-icon icon="running" />
+                    ดัชนีมวลกล้ามเนื้อ : {{ result.mmi }}
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    การแปรผลดัชนีมวลกล้ามเนื้อ : result.mmi_result
+                    <font-awesome-icon icon="running" />
+                    การแปรผลดัชนีมวลกล้ามเนื้อ : {{ result.mmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-weight"></i>
-                    ดัชนีมวลกาย : result.bmi | floatformat:2
+                    <font-awesome-icon icon="weight" />
+                    ดัชนีมวลกาย : {{ result.bmi }}
                   </p>
                   <p>
-                    <i class="fas fa-weight"></i>
-                    การแปรผลดัชนีมวลกาย : result.bmi_result
+                    <font-awesome-icon icon="weight" />
+                    การแปรผลดัชนีมวลกาย : {{ result.bmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-lightbulb"></i>
-                    การแปรผลดัชนีกล้ามเนื้อและดัชนีมวลกาย : result.mmi_result result.bmi_result
+                    <font-awesome-icon icon="lightbulb" />
+                    การแปรผลดัชนีกล้ามเนื้อและดัชนีมวลกาย :{{ result.mmi_result }} {{ result.bmi_result }}
                   </p>
                   <p>
-                    <i class="fas fa-user-md"></i>
-                    แพทย์ : result.bmi_mmi_result.doctor
+                    <font-awesome-icon icon="user-md" />
+                    แพทย์ : {{ result.doctor }}
                   </p>
                   <p>
-                    <i class="fas fa-utensils"></i>
-                    อาหาร : result.bmi_mmi_result.food
+                    <font-awesome-icon icon="utensils" />
+                    อาหาร : {{ result.food }}
                   </p>
                   <p>
-                    <i class="fas fa-running"></i>
-                    กิจกรรมทางกาย : result.bmi_mmi_result.activity
+                    <font-awesome-icon icon="running" />
+                    กิจกรรมทางกาย : {{ result.activity }}
                   </p>
                   <p>
-                    <i class="fas fa-dumbbell"></i>
-                    การออกกำลังกาย : result.bmi_mmi_result.excercise
+                    <font-awesome-icon icon="dumbbell" />
+                    การออกกำลังกาย : {{ result.excercise }}
                   </p>
                 </div>
               </div>
@@ -144,21 +146,13 @@
       </div>
     </section>
     <!--  ========================= End Calculator Area ==========================  -->
-
-    <!-- SOURCE -->
-    <div ref="printMe">
-      <h1>Print me!</h1>
-    </div>
-    <!-- OUTPUT -->
-    <img :src="output" />
   </main>
   <!--  ======================= End Main Area ================================ -->
 </template>
 
 <script>
 import ResultTableCard from "../components/ResultTableCard.vue";
-import html2canvas from "html2canvas";
-
+import domtoimage from "dom-to-image";
 export default {
   name: "ResultPage",
   components: {
@@ -166,74 +160,40 @@ export default {
   },
   data() {
     return {
-      output: null
+      result: null
     };
   },
+  beforeMount() {
+    if (localStorage.getItem("calculateResult")) {
+      this.result = JSON.parse(localStorage.getItem("calculateResult"));
+      this.result.muscle_weight = this.result.muscle_weight.toFixed(2);
+      this.result.mmi = this.result.mmi.toFixed(2);
+      this.result.bmi = this.result.bmi.toFixed(2);
+      console.log(this.result);
+      //   localStorage.removeItem("calculateResult");
+    } else {
+      this.$router.push("/#calculator");
+    }
+  },
   methods: {
-    createImage: async function() {
-      if (screen.width >= 750) {
-        const el = this.$refs.calculator
-        console.log(el)
-        // html2canvas(el, {
-        //   onrendered: canvas => {
-        //     const ctx = canvas.getContext("2d");
-        //     ctx.webkitImageSmoothingEnabled = true;
-        //     ctx.mozImageSmoothingEnabled = true;
-        //     ctx.imageSmoothingEnabled = true;
-        //   }
-        // }).then(canvas => {
-        //     console.log(canvas)
-        //     document.body.appendChild(canvas);
-        //     canvas.toDataURL('image/jpg'), 'FastFest.jpg'
-        // });
-        this.output = (await html2canvas(el)).toDataURL();
-        // document.querySelectorAll(".calculator-result")[0].style.textAlign =
-        //   "left";
-        // document.querySelectorAll(".calculator-result")[1].style.textAlign =
-        //   "left";
-        // document.querySelectorAll(".calculator-result")[2].style.textAlign =
-        //   "left";
-        // document.querySelectorAll(".calculator-result")[3].style.textAlign =
-        //   "left";
-        // document.querySelectorAll(".calculator-result")[4].style.textAlign =
-        //   "left";
-
-        // position it relatively, just below the fold..
-        // myOffscreenEl.style.position = "relative";
-        // myOffscreenEl.style.top = 1200 + "vh";
-
-        // html2canvas(myOffscreenEl, {
-        //   onrendered: function(canvas) {
-        //     var ctx = canvas.getContext("2d");
-        //     ctx.webkitImageSmoothingEnabled = true;
-        //     ctx.mozImageSmoothingEnabled = true;
-        //     ctx.imageSmoothingEnabled = true;
-        //     // restore the old offscreen position
-        //     myOffscreenEl.style.top = 0;
-        //     var a = document.createElement("a");
-        //     // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-        //     console.log(canvas)
-        //     a.href = canvas
-        //       .toDataURL("image/jpeg")
-        //       .replace("image/jpeg", "image/octet-stream");
-        //     a.download = "result.jpg";
-        //     a.click();
-
-        //     // document.querySelectorAll(".calculator-result")[0].style.textAlign =
-        //     //   "center";
-        //     // document.querySelectorAll(".calculator-result")[1].style.textAlign =
-        //     //   "center";
-        //     // document.querySelectorAll(".calculator-result")[2].style.textAlign =
-        //     //   "center";
-        //     // document.querySelectorAll(".calculator-result")[3].style.textAlign =
-        //     //   "center";
-        //     // document.querySelectorAll(".calculator-result")[4].style.textAlign =
-        //     //   "center";
-        //   }
-        // });
-      } else {
-        window.print();
-      }
+    createImage() {
+      const el = this.$refs.calculator;
+      // --- save to img file [option] ---
+      //   domtoimage.toBlob(el).then(function(blob) {
+      //     const FileSaver = require("file-saver");
+      //     FileSaver.saveAs(blob, "result.png");
+      //   });
+      domtoimage
+        .toPng(el)
+        .then(function(dataUrl) {
+          var img = new Image();
+          img.src = dataUrl;
+            var w = window.open(img.src);
+            w.document.write(img.outerHTML);
+        })
+        .catch(function(error) {
+          console.error("oops, something went wrong!", error);
+        });
     }
   }
 };
@@ -252,9 +212,9 @@ export default {
   padding: 4% 10%;
 }
 
-.calculator-area .calculator-result {
+/* .calculator-area .calculator-result {
   padding: 1rem;
   background-color: #f1f3f6;
   text-align: center;
-}
+} */
 </style>
