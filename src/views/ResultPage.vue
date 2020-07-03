@@ -170,7 +170,7 @@ export default {
       this.result.mmi = this.result.mmi.toFixed(2);
       this.result.bmi = this.result.bmi.toFixed(2);
       console.log(this.result);
-      //   localStorage.removeItem("calculateResult");
+        localStorage.removeItem("calculateResult");
     } else {
       this.$router.push("/#calculator");
     }
@@ -178,21 +178,9 @@ export default {
   methods: {
     createImage() {
       const el = this.$refs.calculator;
-      // --- save to img file [option] ---
-      //   domtoimage.toBlob(el).then(function(blob) {
-      //     const FileSaver = require("file-saver");
-      //     FileSaver.saveAs(blob, "result.png");
-      //   });
-      domtoimage
-        .toPng(el)
-        .then(function(dataUrl) {
-          var img = new Image();
-          img.src = dataUrl;
-            var w = window.open(img.src);
-            w.document.write(img.outerHTML);
-        })
-        .catch(function(error) {
-          console.error("oops, something went wrong!", error);
+        domtoimage.toBlob(el).then(function(blob) {
+          const FileSaver = require("file-saver");
+          FileSaver.saveAs(blob, "result.png");
         });
     }
   }
@@ -212,9 +200,4 @@ export default {
   padding: 4% 10%;
 }
 
-/* .calculator-area .calculator-result {
-  padding: 1rem;
-  background-color: #f1f3f6;
-  text-align: center;
-} */
 </style>

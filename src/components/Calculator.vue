@@ -14,66 +14,66 @@
                 <b-form-radio v-model="selected" name="gender" value="F">หญิง</b-form-radio>
               </b-form-group>
               <!-- Age -->
-              <b-form-group
-                id="input-group-1"
-                label="อายุ (ปี)"
-                label-for="input-1"
-                :description="msg_age"
-              >
+              <b-form-group id="input-group-1" label="อายุ (ปี)" label-for="input-1">
                 <b-form-input
                   id="input-1"
                   type="number"
                   min="1"
                   max="39"
                   required
+                  :state="ageState"
                   placeholder="โปรดระบุอายุของคุณ"
                   v-model="age"
                 ></b-form-input>
+                <b-form-invalid-feedback id="input-live-feedback">โปรดระบุอายุในช่วง 1 - 39 ปี</b-form-invalid-feedback>
               </b-form-group>
               <!-- Height -->
-              <b-form-group
-                id="input-group-2"
-                label="ส่วนสูง (เซนติเมตร)"
-                label-for="input-2"
-                :description="msg_height"
-              >
+              <b-form-group id="input-group-2" label="ส่วนสูง (เซนติเมตร)" label-for="input-2">
                 <b-form-input
                   id="input-2"
                   type="number"
+                  min="20"
+                  max="250"
                   required
+                  :state="heightState"
                   placeholder="โปรดระบุส่วนสูงของคุณ"
                   v-model="height"
                 ></b-form-input>
+                <b-form-invalid-feedback
+                  id="input-live-feedback"
+                >โปรดระบุส่วนสูงในช่วง 20 - 250 เซนติเมตร</b-form-invalid-feedback>
               </b-form-group>
               <!-- Weight -->
-              <b-form-group
-                id="input-group-3"
-                label="น้ำหนัก (เซนติเมตร)"
-                label-for="input-3"
-                :description="msg_weight"
-              >
+              <b-form-group id="input-group-3" label="น้ำหนัก (เซนติเมตร)" label-for="input-3">
                 <b-form-input
                   id="input-3"
                   type="number"
+                  min="1"
+                  max="200"
                   required
+                  :state="weightState"
                   placeholder="โปรดระบุน้ำหนักของคุณ"
                   v-model="weight"
                 ></b-form-input>
+                <b-form-invalid-feedback
+                  id="input-live-feedback"
+                >โปรดระบุน้ำหนักในช่วง 1 - 200 กิโลกรัม</b-form-invalid-feedback>
               </b-form-group>
               <!-- Muscle -->
-              <b-form-group
-                id="input-group-4"
-                label="มวลกล้ามเนื้อ (กิโลกรัม)"
-                label-for="input-4"
-                :description="msg_muscle"
-              >
+              <b-form-group id="input-group-4" label="มวลกล้ามเนื้อ (กิโลกรัม)" label-for="input-4">
                 <b-form-input
                   id="input-4"
                   type="number"
+                  min="1"
+                  max="200"
                   required
+                  :state="muscleState"
                   placeholder="โปรดระบุมวลกล้ามเนื้อของคุณ"
                   v-model="muscle"
                 ></b-form-input>
+                <b-form-invalid-feedback
+                  id="input-live-feedback"
+                >โปรดระบุมวลกล้ามเนื้อในช่วง 1 - 200 กิโลกรัม</b-form-invalid-feedback>
               </b-form-group>
             </b-form>
           </b-card-text>
@@ -98,90 +98,46 @@ export default {
       height: "",
       weight: "",
       muscle: "",
-      msg_age: "",
-      msg_height: "",
-      msg_weight: "",
-      msg_muscle: "",
-      msg_invalid: "",
-      isDisabled: false
+      msg_invalid: ""
     };
   },
-  mounted() {
-    // if (this.msg_age != '' && this.msg_height != '' || this.msg_weight != '' || this.msg_muscle != '' || (this.msg_age == '' && this.msg_height == '' && this.msg_weight == '' && this.msg_muscle == '')) {
-    //   this.disabled = 1
-    // } else {
-    //   this.disabled = 0
-    // }
-  },
-  watch: {
-    age(value) {
-      this.age = value;
-      this.validateAge(value);
+  computed: {
+    ageState() {
+      if (this.age == "") {
+        return null;
+      }
+      return this.age < 1 || this.age > 39 ? false : true;
     },
-    height(value) {
-      this.height = value;
-      this.validateHeight(value);
+    heightState() {
+      if (this.height == "") {
+        return null;
+      }
+      return this.height < 20 || this.height > 250 ? false : true;
     },
-    weight(value) {
-      this.weight = value;
-      this.validateWeight(value);
+    weightState() {
+      if (this.weight == "") {
+        return null;
+      }
+      return this.weight < 1 || this.weight > 200 ? false : true;
     },
-    muscle(value) {
-      this.muscle = value;
-      this.validateMuscle(value);
+    muscleState() {
+      if (this.muscle == "") {
+        return null;
+      }
+      return this.muscle < 1 || this.muscle > 200 ? false : true;
     }
   },
   methods: {
-    validateAge(age) {
-      if (age < 1 || age > 39) {
-        this.msg_age = "โปรดระบุอายุในช่วง 1 - 39 ปี";
-      } else {
-        this.msg_age = "";
-      }
-      if (age == "") {
-        this.msg_age = "";
-      }
-    },
-    validateHeight(height) {
-      if (height < 20 || height > 250) {
-        this.msg_height = "โปรดระบุส่วนสูงในช่วง 20 - 250 เซนติเมตร";
-      } else {
-        this.msg_height = "";
-      }
-      if (height == "") {
-        this.msg_height = "";
-      }
-    },
-    validateWeight(weight) {
-      if (weight < 30 || weight > 200) {
-        this.msg_weight = "โปรดระบุน้ำหนักในช่วง 30 - 200 กิโลกรัม";
-      } else {
-        this.msg_weight = "";
-      }
-      if (weight == "") {
-        this.msg_weight = "";
-      }
-    },
-    validateMuscle(muscle) {
-      if (muscle < 30 || muscle > 200) {
-        this.msg_muscle = "โปรดระบุมวลกล้ามเนื้อในช่วง 30 - 200 กิโลกรัม";
-      } else {
-        this.msg_muscle = "";
-      }
-      if (muscle == "") {
-        this.msg_muscle = "";
-      }
-    },
     submitCalculator() {
       if (
-        this.msg_age != "" ||
-        this.msg_height != "" ||
-        this.msg_weight != "" ||
-        this.msg_muscle != "" ||
-        (this.age == "" &&
-          this.height == "" &&
-          this.weight == "" &&
-          this.muscle == "")
+        this.age == "" ||
+        this.height == "" ||
+        this.weight == "" ||
+        this.muscle == "" ||
+        this.age < 1 || this.age > 39 ||
+        this.height < 20 || this.height > 250 ||
+        this.weight < 1 || this.weight > 200 ||
+        this.muscle < 1 || this.muscle > 200
       ) {
         this.msg_invalid = "กรุณาตรวจสอบข้อมูลให้ถูกต้องและครบถ้วน";
         return;
@@ -189,7 +145,7 @@ export default {
       this.msg_invalid = "";
       axios
         .post(
-          "http://localhost:8000/",
+          process.env.VUE_APP_CALCULATE_API_URL,
           {
             gender: this.selected,
             age: this.age,
@@ -209,8 +165,6 @@ export default {
           this.data = res.data;
           localStorage.setItem("calculateResult", JSON.stringify(res.data));
           this.$router.push("result");
-          // TO-DO
-          // alertbox if err else redirect to result page
         });
     }
   }

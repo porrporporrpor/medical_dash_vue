@@ -28,34 +28,6 @@ body {
   color: #414b4f;
 }
 
-@media print {
-  html,
-  body {
-    /*changing width to 100% causes huge overflow and wrap*/
-    height: 100%;
-    font-size: 11pt;
-  }
-
-  .pagebreak {
-    page-break-before: always;
-}
-
-  body * {
-    visibility: hidden;
-  }
-
-  #calculator * {
-    float:none;
-    visibility: visible;
-  }
-  #calculator {
-    position: absolute;
-    background-color: black;
-    top: 20px;
-    width: 100%;
-  }  
-}
-
 @media only screen and (max-width: 1000px) {
   .header_area .main-menu .navbar .navbar-brand {
     padding: 0;

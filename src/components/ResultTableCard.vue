@@ -5,7 +5,7 @@
       <br />
       <h1 class="data-focus">{{ result }}%</h1>
       <div v-if="percentile != ''">
-        <h4>ค่าระหว่าง {{ percentile }}</h4>
+        <h4 class="percentile">ค่าระหว่าง {{ percentile }}</h4>
         <p v-if="interpret_result">( {{ interpret_result }} )</p>
 
         <p class="text-left">ค่าปกติเปอร์เซ็นไทล์</p>
@@ -47,7 +47,7 @@ export default {
     percentile: String,
     df: Array,
     interpret_result: String
-  },
+  }
 };
 </script>
 
@@ -56,5 +56,11 @@ export default {
   padding: 1rem;
   background-color: #f1f3f6;
   text-align: center;
+}
+.data-focus {
+  color: #f16323;
+}
+.percentile {
+  color: #f49f00;
 }
 </style>

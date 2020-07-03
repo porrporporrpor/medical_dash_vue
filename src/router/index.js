@@ -27,6 +27,11 @@ Vue.use(Router)
         path: '/result/', 
         name: 'ResultPage',
         component: () => import("@/views/ResultPage")
+      },
+      { 
+        path: '/calculator/', 
+        name: 'Calculator',
+        component: () => import("@/components/Calculator")
       }
       
     ],
