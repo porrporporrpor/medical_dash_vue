@@ -161,7 +161,6 @@ export default {
           }
         )
         .then(res => {
-          console.log(res.data);
           this.data = res.data;
           localStorage.setItem("calculateResult", JSON.stringify(res.data));
           this.$router.push("result");

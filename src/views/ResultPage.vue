@@ -169,7 +169,6 @@ export default {
       this.result.muscle_weight = this.result.muscle_weight.toFixed(2);
       this.result.mmi = this.result.mmi.toFixed(2);
       this.result.bmi = this.result.bmi.toFixed(2);
-      console.log(this.result);
         localStorage.removeItem("calculateResult");
     } else {
       this.$router.push("/#calculator");
